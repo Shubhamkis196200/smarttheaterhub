@@ -3,17 +3,23 @@ import { tools } from '../data/tools'
 import { reviews } from '../data/reviews'
 import { blogPosts } from '../data/blog'
 import { ArrowRight, Star, Calculator, BookOpen } from 'lucide-react'
+import SEO from '../components/SEO'
 
-const categories = [
-  { name: 'TVs', slug: 'tvs', icon: '📺', count: 45 },
-  { name: 'Projectors', slug: 'projectors', icon: '🎬', count: 32 },
-  { name: 'Speakers', slug: 'speakers', icon: '🔊', count: 38 },
-  { name: 'Soundbars', slug: 'soundbars', icon: '📻', count: 27 },
-  { name: 'AV Receivers', slug: 'av-receivers', icon: '🎛️', count: 21 },
-  { name: 'Streaming', slug: 'streaming', icon: '📡', count: 19 },
-  { name: 'Cables', slug: 'cables', icon: '🔌', count: 12 },
-  { name: 'Smart Home', slug: 'smart-home', icon: '🏠', count: 15 },
+const catMeta = [
+  { name: 'TVs', slug: 'tvs', icon: '📺' },
+  { name: 'Projectors', slug: 'projectors', icon: '🎬' },
+  { name: 'Speakers', slug: 'speakers', icon: '🔊' },
+  { name: 'Soundbars', slug: 'soundbars', icon: '📻' },
+  { name: 'AV Receivers', slug: 'av-receivers', icon: '🎛️' },
+  { name: 'Streaming', slug: 'streaming', icon: '📡' },
+  { name: 'Cables', slug: 'cables', icon: '🔌' },
+  { name: 'Smart Home', slug: 'smart-home', icon: '🏠' },
 ]
+const categories = catMeta.map(c => ({
+  ...c,
+  count: reviews.filter(r => r.category.toLowerCase().replace(/\s+/g, '-') === c.slug).length +
+         blogPosts.filter(b => b.category.toLowerCase().replace(/\s+/g, '-') === c.slug).length
+}))
 
 export default function Home() {
   return (
@@ -21,6 +27,7 @@ export default function Home() {
       {/* Hero */}
       <section style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', color: '#fff', padding: '5rem 0' }}>
         <div className="container" style={{ textAlign: 'center' }}>
+          <SEO title="SmartTheaterHub" description="Free home theater tools, calculators, and expert reviews. 50+ tools for screen size, speaker placement, room acoustics, and more." path="/" />
           <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#0077FF', marginBottom: '1rem', letterSpacing: 1 }}>YOUR HOME THEATER COMMAND CENTER</div>
           <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem' }}>
             Expert Reviews, Free Tools &<br />
@@ -50,16 +57,16 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="section" style={{ background: '#f8f9fa' }}>
+      <section className="section" style={{ background: '#171728' }}>
         <div className="container">
           <h2 style={{ fontSize: '1.75rem', fontWeight: 800, textAlign: 'center', marginBottom: '0.5rem' }}>Browse by Category</h2>
-          <p style={{ textAlign: 'center', color: '#6c757d', marginBottom: '2.5rem' }}>Find reviews and guides for every component of your home theater</p>
+          <p style={{ textAlign: 'center', color: '#9ca3af', marginBottom: '2.5rem' }}>Find reviews and guides for every component of your home theater</p>
           <div className="grid-4">
             {categories.map(c => (
-              <Link key={c.slug} to={`/category/${c.slug}`} className="card" style={{ textAlign: 'center', textDecoration: 'none', color: 'inherit' }}>
+              <Link key={c.slug} to={`/category/${c.slug}`} className="card" style={{ textAlign: 'center', textDecoration: 'none', color: '#e8e8f0' }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>{c.icon}</div>
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.25rem' }}>{c.name}</h3>
-                <p style={{ fontSize: '0.8rem', color: '#6c757d' }}>{c.count} reviews & guides</p>
+                <p style={{ fontSize: '0.8rem', color: '#9ca3af' }}>{c.count} reviews & guides</p>
               </Link>
             ))}
           </div>
@@ -72,24 +79,24 @@ export default function Home() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
             <div>
               <h2 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Latest Reviews</h2>
-              <p style={{ color: '#6c757d' }}>Expert-tested, real-world reviews</p>
+              <p style={{ color: '#9ca3af' }}>Expert-tested, real-world reviews</p>
             </div>
             <Link to="/reviews" className="btn btn-outline" style={{ fontSize: '0.85rem' }}>View All <ArrowRight size={14} /></Link>
           </div>
           <div className="grid-3">
             {reviews.slice(0, 6).map(r => (
-              <Link key={r.slug} to={`/reviews/${r.slug}`} className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem', textAlign: 'center', padding: '1.5rem 0', background: '#f8f9fa', borderRadius: 8 }}>{r.image}</div>
+              <Link key={r.slug} to={`/reviews/${r.slug}`} className="card" style={{ textDecoration: 'none', color: '#e8e8f0' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '1rem', textAlign: 'center', padding: '1.5rem 0', background: '#1e1e30', borderRadius: 8 }}>{r.image}</div>
                 <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.5rem' }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: 600, background: '#0077FF', color: '#fff', padding: '0.125rem 0.5rem', borderRadius: 4 }}>{r.category}</span>
-                  <span style={{ fontSize: '0.75rem', color: '#6c757d' }}>{r.date}</span>
+                  <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>{r.date}</span>
                 </div>
                 <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.5rem', lineHeight: 1.3 }}>{r.title}</h3>
-                <p style={{ fontSize: '0.85rem', color: '#6c757d', lineHeight: 1.5 }}>{r.excerpt}</p>
+                <p style={{ fontSize: '0.85rem', color: '#9ca3af', lineHeight: 1.5 }}>{r.excerpt}</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', marginTop: '0.75rem' }}>
                   <Star size={14} fill="#0077FF" color="#0077FF" />
                   <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0077FF' }}>{r.rating}</span>
-                  <span style={{ fontSize: '0.8rem', color: '#6c757d', marginLeft: '0.5rem' }}>{r.readTime} read</span>
+                  <span style={{ fontSize: '0.8rem', color: '#9ca3af', marginLeft: '0.5rem' }}>{r.readTime} read</span>
                 </div>
               </Link>
             ))}
@@ -123,17 +130,17 @@ export default function Home() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
             <div>
               <h2 style={{ fontSize: '1.75rem', fontWeight: 800 }}>From the Blog</h2>
-              <p style={{ color: '#6c757d' }}>In-depth guides and analysis</p>
+              <p style={{ color: '#9ca3af' }}>In-depth guides and analysis</p>
             </div>
             <Link to="/blog" className="btn btn-outline" style={{ fontSize: '0.85rem' }}>View All <ArrowRight size={14} /></Link>
           </div>
           <div className="grid-3">
             {blogPosts.slice(0, 3).map(p => (
-              <Link key={p.slug} to={`/blog/${p.slug}`} className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Link key={p.slug} to={`/blog/${p.slug}`} className="card" style={{ textDecoration: 'none', color: '#e8e8f0' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#0077FF' }}>{p.category}</span>
                 <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: '0.5rem 0', lineHeight: 1.3 }}>{p.title}</h3>
-                <p style={{ fontSize: '0.85rem', color: '#6c757d', lineHeight: 1.5 }}>{p.excerpt}</p>
-                <div style={{ fontSize: '0.8rem', color: '#6c757d', marginTop: '0.75rem' }}>{p.date} · {p.readTime} read</div>
+                <p style={{ fontSize: '0.85rem', color: '#9ca3af', lineHeight: 1.5 }}>{p.excerpt}</p>
+                <div style={{ fontSize: '0.8rem', color: '#9ca3af', marginTop: '0.75rem' }}>{p.date} · {p.readTime} read</div>
               </Link>
             ))}
           </div>
@@ -145,7 +152,7 @@ export default function Home() {
         <div className="container">
           <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '1rem' }}>Ready to Build Your Dream Theater?</h2>
           <p style={{ fontSize: '1.1rem', opacity: 0.9, marginBottom: '2rem', maxWidth: 500, margin: '0 auto 2rem' }}>Start with our free tools and expert guides to make informed decisions at every step.</p>
-          <Link to="/tools" className="btn" style={{ background: '#fff', color: '#0077FF', fontWeight: 700, fontSize: '1rem', padding: '0.875rem 2rem' }}>Get Started Free <ArrowRight size={16} /></Link>
+          <Link to="/tools" className="btn" style={{ background: '#171728', color: '#0077FF', fontWeight: 700, fontSize: '1rem', padding: '0.875rem 2rem' }}>Get Started Free <ArrowRight size={16} /></Link>
         </div>
       </section>
     </div>

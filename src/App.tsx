@@ -12,6 +12,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import SearchPage from './pages/SearchPage'
 import GuidesPage from './pages/GuidesPage'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

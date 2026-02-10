@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { reviews } from '../data/reviews'
 import { tools } from '../data/tools'
 import { Star } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const catInfo: Record<string, { name: string; desc: string; icon: string }> = {
   'tvs': { name: 'TVs & Displays', desc: 'OLED, QLED, Mini LED — find the perfect TV for your setup', icon: '📺' },
@@ -25,16 +26,30 @@ const catReviewMap: Record<string, string[]> = {
   'smart-home': ['smart-home-theater-integration'],
 }
 
+const catToolMap: Record<string, string[]> = {
+  'tvs': ['Video & Display'],
+  'projectors': ['Video & Display', 'Room & Setup'],
+  'speakers': ['Audio'],
+  'soundbars': ['Audio'],
+  'av-receivers': ['Audio'],
+  'streaming': ['Budget & Shopping'],
+  'cables': ['Room & Setup'],
+  'smart-home': ['Room & Setup', 'Budget & Shopping'],
+}
+
 export default function CategoryPage() {
   const { slug } = useParams()
   const info = catInfo[slug || '']
   if (!info) return <div className="container section"><h1>Category not found</h1></div>
   const catReviews = (catReviewMap[slug || ''] || []).map(s => reviews.find(r => r.slug === s)).filter(Boolean) as typeof reviews
+  const catToolCategories = catToolMap[slug || ''] || []
+  const relatedTools = tools.filter(t => catToolCategories.includes(t.category)).slice(0, 6)
 
   return (
     <div>
       <section style={{ background: 'linear-gradient(135deg, #1a1a2e, #16213e)', color: '#fff', padding: '3rem 0', textAlign: 'center' }}>
         <div className="container">
+          <SEO title={info.name} description={info.desc + ' — reviews, tools, and guides.'} path={`/category/${slug}`} />
           <div style={{ fontSize: '3rem', marginBottom: '0.75rem' }}>{info.icon}</div>
           <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>{info.name}</h1>
           <p style={{ color: '#adb5bd', fontSize: '1.1rem' }}>{info.desc}</p>
@@ -48,7 +63,7 @@ export default function CategoryPage() {
               {catReviews.map(r => (
                 <Link key={r.slug} to={`/reviews/${r.slug}`} className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
                   <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.5rem' }}>{r.title}</h3>
-                  <p style={{ fontSize: '0.85rem', color: '#6c757d', marginBottom: '0.5rem' }}>{r.excerpt}</p>
+                  <p style={{ fontSize: '0.85rem', color: '#9ca3af', marginBottom: '0.5rem' }}>{r.excerpt}</p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                     <Star size={14} fill="#0077FF" color="#0077FF" /><span style={{ fontWeight: 700, fontSize: '0.85rem', color: '#0077FF' }}>{r.rating}/5</span>
                   </div>
@@ -58,11 +73,11 @@ export default function CategoryPage() {
           </>}
           <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>Related Tools</h2>
           <div className="grid-3">
-            {tools.slice(0, 6).map(t => (
+            {relatedTools.map(t => (
               <Link key={t.slug} to={`/tools/${t.slug}`} className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <span style={{ fontSize: '1.5rem' }}>{t.icon}</span>
                 <h3 style={{ fontSize: '0.9rem', fontWeight: 700, margin: '0.5rem 0 0.25rem' }}>{t.name}</h3>
-                <p style={{ fontSize: '0.8rem', color: '#6c757d' }}>{t.description}</p>
+                <p style={{ fontSize: '0.8rem', color: '#9ca3af' }}>{t.description}</p>
               </Link>
             ))}
           </div>

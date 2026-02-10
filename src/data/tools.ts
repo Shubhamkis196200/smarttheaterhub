@@ -15,7 +15,7 @@ export const tools: Tool[] = [
   { id:10, slug:'hdmi-bandwidth-calculator', name:'HDMI Bandwidth Calculator', description:'Find required HDMI version for your setup', category:'Room & Setup', icon:'📡' },
   { id:11, slug:'power-consumption-calculator', name:'Power Consumption Calculator', description:'Calculate total watts and annual energy cost', category:'Room & Setup', icon:'⚡' },
   { id:12, slug:'btu-calculator', name:'BTU Calculator', description:'Estimate cooling needed for your theater room', category:'Room & Setup', icon:'❄️' },
-  { id:13, slug:'wire-gauge-calculator', name:'Wire Gauge Calculator', description:'Find minimum wire gauge for speaker runs', category:'Room & Setup', icon:'🔗' },
+  { id:13, slug:'wire-gauge-calculator', name:'Wire Gauge Calculator', description:'Find minimum wire gauge for speaker runs based on impedance', category:'Room & Setup', icon:'🔗' },
   { id:14, slug:'mounting-height-calculator', name:'Mounting Height Calculator', description:'Calculate ideal screen/TV mounting height', category:'Room & Setup', icon:'📺' },
   { id:15, slug:'room-volume-calculator', name:'Room Volume Calculator', description:'Calculate room volume and acoustic treatment needs', category:'Room & Setup', icon:'📦' },
   { id:16, slug:'speaker-impedance-calculator', name:'Speaker Impedance Calculator', description:'Calculate total impedance for series/parallel wiring', category:'Audio', icon:'⚡' },
@@ -43,7 +43,7 @@ export const tools: Tool[] = [
   { id:38, slug:'tv-calibration-guide', name:'TV Calibration Guide', description:'Step-by-step picture settings guide', category:'Video & Display', icon:'🎛️' },
   { id:39, slug:'gaming-mode-checker', name:'Gaming Mode Checker', description:'Rate your TV for gaming suitability', category:'Video & Display', icon:'🕹️' },
   { id:40, slug:'burn-in-risk-calculator', name:'Burn-In Risk Calculator', description:'Assess OLED burn-in risk from usage patterns', category:'Video & Display', icon:'🔥' },
-  { id:41, slug:'budget-planner', name:'Home Theater Budget Planner', description:'Allocate budget across equipment categories', category:'Budget & Shopping', icon:'💰' },
+  { id:41, slug:'budget-planner', name:'Home Theater Budget Planner', description:'Allocate budget across equipment categories including display', category:'Budget & Shopping', icon:'💰' },
   { id:42, slug:'price-per-inch', name:'Price Per Inch Calculator', description:'Compare TV value by price per inch', category:'Budget & Shopping', icon:'💵' },
   { id:43, slug:'cost-per-year', name:'Cost Per Year Calculator', description:'Calculate annual total cost of ownership', category:'Budget & Shopping', icon:'📅' },
   { id:44, slug:'streaming-service-calculator', name:'Streaming Service Calculator', description:'Find the best streaming combo for your habits', category:'Budget & Shopping', icon:'📺' },
@@ -53,6 +53,18 @@ export const tools: Tool[] = [
   { id:48, slug:'black-friday-tracker', name:'Black Friday Deal Tracker', description:'Historical price patterns for AV gear', category:'Budget & Shopping', icon:'🛒' },
   { id:49, slug:'warranty-comparison', name:'Warranty Comparison', description:'Compare manufacturer vs extended warranty value', category:'Budget & Shopping', icon:'🛡️' },
   { id:50, slug:'energy-star-calculator', name:'Energy Star Calculator', description:'Calculate energy efficiency rating', category:'Budget & Shopping', icon:'🌱' },
+  // Connectivity
+  { id:51, slug:'wifi-signal-calculator', name:'Wi-Fi Signal Calculator', description:'Estimate Wi-Fi signal strength for streaming', category:'Connectivity', icon:'📶' },
+  { id:52, slug:'network-bandwidth-calculator', name:'Network Bandwidth Calculator', description:'Check if your internet supports 4K streaming', category:'Connectivity', icon:'🌐' },
+  { id:53, slug:'hdmi-arc-guide', name:'HDMI ARC vs eARC Guide', description:'Compare audio return channel capabilities', category:'Connectivity', icon:'🔗' },
+  { id:54, slug:'ethernet-vs-wifi', name:'Ethernet vs Wi-Fi Comparison', description:'Find the best connection for your use case', category:'Connectivity', icon:'🔌' },
+  { id:55, slug:'bluetooth-codec-checker', name:'Bluetooth Codec Checker', description:'Compare Bluetooth audio codec quality and latency', category:'Connectivity', icon:'🎧' },
+  // Smart Home
+  { id:56, slug:'smart-scene-planner', name:'Smart Scene Planner', description:'Plan automation scenes for movie night and more', category:'Smart Home', icon:'🏠' },
+  { id:57, slug:'voice-assistant-comparison', name:'Voice Assistant Comparison', description:'Find the best voice assistant for AV control', category:'Smart Home', icon:'🗣️' },
+  { id:58, slug:'bias-lighting-calculator', name:'Bias Lighting Calculator', description:'Calculate LED strip length and brightness for your TV', category:'Smart Home', icon:'💡' },
+  { id:59, slug:'smart-power-calculator', name:'Smart Power Calculator', description:'Calculate phantom power waste from standby devices', category:'Smart Home', icon:'🔋' },
+  { id:60, slug:'ir-vs-ip-control', name:'IR vs IP Control Guide', description:'Choose the right remote control technology', category:'Smart Home', icon:'📱' },
 ]
 
-export const toolCategories = ['Room & Setup', 'Audio', 'Video & Display', 'Budget & Shopping']
+export const toolCategories = ['Room & Setup', 'Audio', 'Video & Display', 'Budget & Shopping', 'Connectivity', 'Smart Home']

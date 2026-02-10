@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const guides = [
   { title: 'Beginner\'s Guide to Home Theater', desc: 'Everything you need to know to get started with home theater, from choosing your first TV to setting up surround sound.', icon: '🎓', link: '/blog/how-to-build-home-theater-any-budget' },
@@ -23,6 +24,7 @@ export default function GuidesPage() {
     <div>
       <section style={{ background: 'linear-gradient(135deg, #1a1a2e, #16213e)', color: '#fff', padding: '3rem 0', textAlign: 'center' }}>
         <div className="container">
+          <SEO title="Buying Guides" description="Complete home theater buying guides — TVs, projectors, speakers, and more." path="/guides" />
           <h1 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>Buying Guides</h1>
           <p style={{ color: '#adb5bd', fontSize: '1.1rem' }}>In-depth guides to help you build the perfect home theater</p>
         </div>
@@ -35,7 +37,7 @@ export default function GuidesPage() {
               <Link key={g.title} to={g.link} className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{g.icon}</div>
                 <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.375rem' }}>{g.title}</h3>
-                <p style={{ fontSize: '0.85rem', color: '#6c757d', lineHeight: 1.5 }}>{g.desc}</p>
+                <p style={{ fontSize: '0.85rem', color: '#9ca3af', lineHeight: 1.5 }}>{g.desc}</p>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: '0.85rem', fontWeight: 600, color: '#0077FF', marginTop: '0.75rem' }}>Read Guide <ArrowRight size={14} /></span>
               </Link>
             ))}

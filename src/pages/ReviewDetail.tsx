@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { reviews } from '../data/reviews'
 import { ArrowLeft, Star } from 'lucide-react'
+import SEO from '../components/SEO'
 
 export default function ReviewDetail() {
   const { slug } = useParams()
@@ -11,6 +12,7 @@ export default function ReviewDetail() {
     <div>
       <section style={{ background: 'linear-gradient(135deg, #1a1a2e, #16213e)', color: '#fff', padding: '2.5rem 0' }}>
         <div className="container" style={{ maxWidth: 800 }}>
+          <SEO title={review.title} description={review.excerpt || review.title} path={`/reviews/${review.slug}`} />
           <Link to="/reviews" style={{ color: '#adb5bd', display: 'flex', alignItems: 'center', gap: 4, marginBottom: '1rem', fontSize: '0.85rem' }}><ArrowLeft size={14} /> All Reviews</Link>
           <span style={{ fontSize: '0.8rem', fontWeight: 600, background: 'rgba(0,119,255,0.2)', color: '#0077FF', padding: '0.25rem 0.75rem', borderRadius: 4 }}>{review.category}</span>
           <h1 style={{ fontSize: '2rem', fontWeight: 800, margin: '0.75rem 0 0.5rem' }}>{review.title}</h1>
@@ -23,7 +25,7 @@ export default function ReviewDetail() {
       <section className="section">
         <div className="container" style={{ maxWidth: 800 }}>
           {review.content.map((p, i) => (
-            <p key={i} style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#333', marginBottom: '1.25rem' }}>{p}</p>
+            <p key={i} style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#c4c8d0', marginBottom: '1.25rem' }}>{p}</p>
           ))}
           {review.products && <>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 800, margin: '2rem 0 1.5rem', borderBottom: '3px solid #0077FF', paddingBottom: '0.5rem' }}>Our Top Picks</h2>
@@ -46,7 +48,7 @@ export default function ReviewDetail() {
                     {p.cons.map((con, j) => <p key={j} style={{ fontSize: '0.85rem', marginBottom: '0.25rem' }}>❌ {con}</p>)}
                   </div>
                 </div>
-                <p style={{ fontSize: '0.9rem', color: '#495057', fontStyle: 'italic', background: '#f8f9fa', padding: '0.75rem', borderRadius: 8 }}>💬 {p.verdict}</p>
+                <p style={{ fontSize: '0.9rem', color: '#c4c8d0', fontStyle: 'italic', background: '#171728', padding: '0.75rem', borderRadius: 8 }}>💬 {p.verdict}</p>
               </div>
             ))}
           </>}
