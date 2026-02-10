@@ -258,7 +258,7 @@ function ToolEngine({ slug }: { slug: string }) {
     case 'wire-gauge-calculator': {
       const watts = N(s('watts')); const impedance = N(s('impedance'), 8); const dist = N(s('dist'))
       const amps = watts > 0 && impedance > 0 ? Math.sqrt(watts / impedance) : 0
-      const _resistance = amps > 0 ? impedance * 0.05 : 0 // 5% max loss
+
       return <div>
         <Input label="Amplifier Power" k="watts" ph="100" unit="watts/channel" />
         <Input label="Speaker Impedance" k="impedance" ph="8" unit="ohms" />
@@ -322,7 +322,7 @@ function ToolEngine({ slug }: { slug: string }) {
       </div>
     }
     case 'amplifier-power-calculator': {
-      const _vol = N(s('vol')); const sens = N(s('sens'), 88); const level = N(s('level'), 85)
+      const sens = N(s('sens'), 88); const level = N(s('level'), 85)
       const dist = N(s('dist'), 10)
       const dbNeeded = level - sens + 20 * Math.log10(dist / 3.28)
       const watts = Math.pow(10, dbNeeded / 10)
@@ -397,7 +397,7 @@ function ToolEngine({ slug }: { slug: string }) {
       </div>
     }
     case 'frequency-response-visualizer': {
-      const low = N(s('low'), 40); const high = N(s('high'), 20000); const _sens = N(s('sens'), 88)
+      const low = N(s('low'), 40); const high = N(s('high'), 20000)
       return <div>
         <Input label="Low Frequency (-3dB)" k="low" ph="40" unit="Hz" />
         <Input label="High Frequency (-3dB)" k="high" ph="20000" unit="Hz" />
